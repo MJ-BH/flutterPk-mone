@@ -37,7 +37,7 @@ class _MyHomePageViewState extends State<MyHomePageView> {
             TextField(),
             Expanded(
               child: FutureBuilder(
-                future: getdata(),
+                future: filtreData(),
                 builder: (_, data) {
                   if (data.hasData) {
                     List<Pokemon> pokomemos = data.data;
@@ -64,4 +64,9 @@ getdata() async {
   print(response.body);
   List<Pokemon> pokemons = pokemonFromJson(response.body);
   return pokemons;
+}
+
+filtreData() async {
+  List<Pokemon> listData = await getdata();
+  return listData;
 }
